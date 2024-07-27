@@ -13,12 +13,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-function sendEmail(payload, sender, to) {
+const emailHTML = render(Email({ url: "https://example.com" }));
+
+
+function sendEmail(userEmail) {
   const mailOptions = {
     from: `help@podlaunch.co.uk`,
-    to: to,
-    subject: payload.subject,
-    html: payload.content,
+    to: userEmail,
+    subject: "Birthday Reminder",
+    html: emailHTML,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
