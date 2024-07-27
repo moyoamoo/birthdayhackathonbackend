@@ -49,38 +49,9 @@ export const BirthdayReminderEmail = () => (
             </Link>
             .
           </Text>
-          {/* <Text style={paragraph}>
-              Once you're ready to start accepting payments, you'll just need to
-              use your live{" "}
-              <Link style={anchor} href="#">
-                API keys
-              </Link>{" "}
-              instead of your test API keys. Your account can simultaneously be
-              used for both test and live requests, so you can continue testing
-              while accepting live payments. Check out our{" "}
-              <Link style={anchor} href="#">
-                tutorial about account basics
-              </Link>
-              .
-            </Text>
-            <Text style={paragraph}>
-              Finally, we've put together a{" "}
-              <Link style={anchor} href="#">
-                quick checklist
-              </Link>{" "}
-              to ensure your website conforms to card network standards.
-            </Text>
-            <Text style={paragraph}>
-              We'll be here to help you with any step along the way. You can find
-              answers to most questions and get in touch with us on our{" "}
-              <Link style={anchor} href="#">
-                support site
-              </Link>
-              .
-            </Text> */}
           <Text style={paragraph}>— #TeamSZMM</Text>
           <Hr style={hr} />
-          <Text style={footer}>Project Name Here?</Text>
+          <Text style={footer}>AnniverSay</Text>
         </Section>
       </Container>
     </Body>
@@ -106,7 +77,7 @@ const h1 = {
 };
 
 const container = {
-  backgroundColor: "#ffffff",
+  backgroundColor: "#ADD8E6",
   margin: "0 auto",
   padding: "20px 0 48px",
   marginBottom: "64px",
@@ -134,7 +105,7 @@ const anchor = {
 };
 
 const button = {
-  backgroundColor: "#ec7898",
+  backgroundColor: "#BA5E00",
   borderRadius: "5px",
   color: "#fff",
   fontSize: "16px",

@@ -3,12 +3,11 @@ const app = express();
 const cors = require("cors");
 const helmet = require("helmet");
 const exec = require("child_process").exec;
-const cron = require('node-cron');
+const cron = require("node-cron");
 
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
-
 
 app.use("/products", require("./products"));
 app.use("/add_birthday", require("./post"));
@@ -37,12 +36,12 @@ cron.schedule("0 * * * *", async () => {
 cron.schedule("0 0 * * *", async () => {
   const getHourly = `SELECT * FROM users
                       WHERE email_frequency LIKE ?`;
-  try {
-    const result = await connectMySQL(getHourly, ["daily"]);
-    console.log(result);
-  } catch (e) {
-    console.log("no daily users");
-  }
+  // try {
+  //   const result = await connectMySQL(getHourly, ["daily"]);
+  //   console.log(result);
+  // } catch (e) {
+  //   console.log("no daily users");
+  // }
 });
 
 //weekly cron job
