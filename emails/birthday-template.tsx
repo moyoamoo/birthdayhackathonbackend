@@ -18,76 +18,76 @@ const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "";
 
-export const BirthdayReminderEmail = () => (
+function BirthdayReminderEmail(){
   <Html>
-    <Head />
+  <Head />
 
-    <Preview>Don't forget it's Manzi's Birthday in 360 days! </Preview>
-    <Body style={main}>
-      <Container style={container}>
-        <Section style={box}>
-          <Img
-            src={`https://gcdnb.pbrd.co/images/AOg2axderXPh.png?o=1`}
-            width="64"
-            height="64"
-            alt="cake"
-          />
-          <Heading style={h1}>You have a birthday coming up!</Heading>
-          <Hr style={hr} />
-          <Text style={paragraph}>Manzi's Birthday is in 360 days!</Text>
-          <Text style={paragraph}>
-            Here are some gift ideas they might be interested in:
-          </Text>
-          <Button style={button} href="#">
-            Gift Ideas
-          </Button>
-          <Hr style={hr} />
-          <Text style={paragraph}>
-            If you need to make changes to this reminder, you can do so{" "}
+  <Preview>Don't forget it's Manzi's Birthday in 360 days! </Preview>
+  <Body style={main}>
+    <Container style={container}>
+      <Section style={box}>
+        <Img
+          src={`https://gcdnb.pbrd.co/images/AOg2axderXPh.png?o=1`}
+          width="64"
+          height="64"
+          alt="cake"
+        />
+        <Heading style={h1}>You have a birthday coming up!</Heading>
+        <Hr style={hr} />
+        <Text style={paragraph}>Manzi's Birthday is in 360 days!</Text>
+        <Text style={paragraph}>
+          Here are some gift ideas they might be interested in:
+        </Text>
+        <Button style={button} href="#">
+          Gift Ideas
+        </Button>
+        <Hr style={hr} />
+        <Text style={paragraph}>
+          If you need to make changes to this reminder, you can do so{" "}
+          <Link style={anchor} href="#">
+            here
+          </Link>
+          .
+        </Text>
+        {/* <Text style={paragraph}>
+            Once you're ready to start accepting payments, you'll just need to
+            use your live{" "}
             <Link style={anchor} href="#">
-              here
+              API keys
+            </Link>{" "}
+            instead of your test API keys. Your account can simultaneously be
+            used for both test and live requests, so you can continue testing
+            while accepting live payments. Check out our{" "}
+            <Link style={anchor} href="#">
+              tutorial about account basics
             </Link>
             .
           </Text>
-          {/* <Text style={paragraph}>
-              Once you're ready to start accepting payments, you'll just need to
-              use your live{" "}
-              <Link style={anchor} href="#">
-                API keys
-              </Link>{" "}
-              instead of your test API keys. Your account can simultaneously be
-              used for both test and live requests, so you can continue testing
-              while accepting live payments. Check out our{" "}
-              <Link style={anchor} href="#">
-                tutorial about account basics
-              </Link>
-              .
-            </Text>
-            <Text style={paragraph}>
-              Finally, we've put together a{" "}
-              <Link style={anchor} href="#">
-                quick checklist
-              </Link>{" "}
-              to ensure your website conforms to card network standards.
-            </Text>
-            <Text style={paragraph}>
-              We'll be here to help you with any step along the way. You can find
-              answers to most questions and get in touch with us on our{" "}
-              <Link style={anchor} href="#">
-                support site
-              </Link>
-              .
-            </Text> */}
-          <Text style={paragraph}>— #TeamSZMM</Text>
-          <Hr style={hr} />
-          <Text style={footer}>Project Name Here?</Text>
-        </Section>
-      </Container>
-    </Body>
-  </Html>
-);
+          <Text style={paragraph}>
+            Finally, we've put together a{" "}
+            <Link style={anchor} href="#">
+              quick checklist
+            </Link>{" "}
+            to ensure your website conforms to card network standards.
+          </Text>
+          <Text style={paragraph}>
+            We'll be here to help you with any step along the way. You can find
+            answers to most questions and get in touch with us on our{" "}
+            <Link style={anchor} href="#">
+              support site
+            </Link>
+            .
+          </Text> */}
+        <Text style={paragraph}>— #TeamSZMM</Text>
+        <Hr style={hr} />
+        <Text style={footer}>Project Name Here?</Text>
+      </Section>
+    </Container>
+  </Body>
+</Html>
 
-export default BirthdayReminderEmail;
+}
+
 
 const main = {
   backgroundColor: "#f6f9fc",
@@ -151,3 +151,5 @@ const footer = {
   fontSize: "12px",
   lineHeight: "16px",
 };
+
+module.exports = { BirthdayReminderEmail };
