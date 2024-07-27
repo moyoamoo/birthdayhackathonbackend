@@ -6,17 +6,17 @@ const transporter = nodemailer.createTransport({
   port: 465,
   secure: true, //allow use of port 587 must be true if port 465
   auth: {
-    // user: //email,
-    // pass: //password ,
+    // user: "mail.podlaunch.co.uk",
+    // pass: "&T)pdp*^,A_[",
+    user: process.env.EMAIL_HOST,
+    password: process.env.EMAIL_PASSWORD,
   },
 });
-
-const emailHtml = render(<Email url="https://example.com" />);
 
 function sendEmail(payload, sender, to) {
   const mailOptions = {
     from: `help@podlaunch.co.uk`,
-    to: to[0].email,
+    to: to,
     subject: payload.subject,
     html: payload.content,
   };

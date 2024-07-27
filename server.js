@@ -5,6 +5,7 @@ const helmet = require("helmet");
 const exec = require("child_process").exec;
 const cron = require("node-cron");
 const connectMySQL = require("./mysql/driver");
+const { sendEmail } = require("./email/nodemailer");
 
 app.use(cors());
 app.use(express.json());
@@ -25,7 +26,9 @@ app.listen(PORT, () => {
                       WHERE email_frequency LIKE ?`;
     try {
       const result = await connectMySQL(getHourly, ["hourly"]);
-      console.log(result);
+      result.map((email) => {
+        sendEmail(htmlEmail, sender, email.email)
+      });
     } catch (e) {
       console.log("no hourly users");
     }
