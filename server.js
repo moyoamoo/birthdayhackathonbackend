@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(helmet());
+app.use("/products", require("./products"));
 
 const PORT = process.env.PORT || 6001;
 app.listen(PORT, () => {
