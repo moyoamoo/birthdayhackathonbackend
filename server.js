@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(helmet());
+app.use("/products", require("./products"));
 
 app.use("/add_birthday", require("./post"));
 app.use("/get_hourly", require("./getHourly"));
