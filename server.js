@@ -3,12 +3,12 @@ const app = express();
 const cors = require("cors");
 const helmet = require("helmet");
 const exec = require("child_process").exec;
-const cron = require('node-cron');
+const cron = require("node-cron");
+const connectMySQL = require("./mysql/driver");
 
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
-
 
 app.use("/products", require("./products"));
 app.use("/add_birthday", require("./post"));
@@ -19,41 +19,42 @@ app.listen(PORT, () => {
 });
 
 //hourly cron job
-cron.schedule("0 * * * *", async () => {
-  const getHourly = `SELECT * FROM users
-                      WHERE email_frequency LIKE ?`;
-  try {
-    const result = await connectMySQL(getHourly, ["hourly"]);
-    result.map((email) => {
-      sendEmail(htmlEmail, sender, email.email);
-    });
-  } catch (e) {
-    console.log("no hourly users");
-  }
-});
+// cron.schedule("* * * * *", async () => {
+//   const getHourly = `SELECT * FROM users
+//                       WHERE email_frequency LIKE ?`;
+//   try {
+//     const result = await connectMySQL(getHourly, ["hourly"]);
+//     result.map((email) => {
+//       sendEmail(htmlEmail, sender, email.email);
+//     });
+//   } catch (e) {
+//     console.log("no hourly users");
+//     console.log(e);
+//   }
+// });
 
-//daily cron job
+// //daily cron job
 
-cron.schedule("0 0 * * *", async () => {
-  const getHourly = `SELECT * FROM users
-                      WHERE email_frequency LIKE ?`;
-  try {
-    const result = await connectMySQL(getHourly, ["daily"]);
-    console.log(result);
-  } catch (e) {
-    console.log("no daily users");
-  }
-});
+// cron.schedule("0 0 * * *", async () => {
+//   const getHourly = `SELECT * FROM users
+//                       WHERE email_frequency LIKE ?`;
+//   try {
+//     const result = await connectMySQL(getHourly, ["daily"]);
+//     console.log(result);
+//   } catch (e) {
+//     console.log("no daily users");
+//   }
+// });
 
-//weekly cron job
-cron.schedule("0 0 * * 0", async () => {
-  const getHourly = `SELECT * FROM users
-                      WHERE email_frequency LIKE ?`;
-  try {
-    const result = await connectMySQL(getHourly, ["weekly"]);
-    console.log(result);
-  } catch (e) {
-    console.log("no weekly users");
-  }
-});
+// //weekly cron job
+// cron.schedule("0 0 * * 0", async () => {
+//   const getHourly = `SELECT * FROM users
+//                       WHERE email_frequency LIKE ?`;
+//   try {
+//     const result = await connectMySQL(getHourly, ["weekly"]);
+//     console.log(result);
+//   } catch (e) {
+//     console.log("no weekly users");
+//   }
+// });
 //hello

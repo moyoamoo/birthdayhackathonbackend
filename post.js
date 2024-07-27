@@ -1,20 +1,26 @@
 const express = require("express");
 const router = express.Router();
 const connectMySQL = require("./mysql/driver");
+
 router.post("/", async (req, res) => {
-  let { userName, userEmail, emailFrequency, partnerName, bdayDate, products } =
-    req.body;
+  let { userName, userEmail, emailFrequency, partnersName, bdayDate, products } =
+    req.body.formDetails;
+
+    console.log("i ran")
   if (
     !userName ||
     !userEmail ||
     !emailFrequency ||
     !bdayDate ||
-    !partnerName ||
+    !partnersName ||
     !products
   ) {
     res.send({ status: 0, reason: "Missing data" });
     return;
   }
+
+
+
   const newDate = new Date(bdayDate * 1000);
   const bdayYear = newDate.getFullYear();
   const bdayMonth = newDate.getMonth() + 1;
@@ -22,9 +28,9 @@ router.post("/", async (req, res) => {
   const birthday = bdayYear + "-" + bdayMonth + "-" + bdayDay;
 
   const addBirthday = `INSERT INTO users
-          (username, email, email_frequency, partner_name, birthday, products)
+          (username, email, email_frequency, partner_name, birthday, product_interests)
             values
-              (?, ?, ?, ?, ?)`;
+              (?, ?, ?, ?, ?, ?)`;
 
   const productsStr = products.toString();
 
@@ -33,12 +39,13 @@ router.post("/", async (req, res) => {
       userName,
       userEmail,
       emailFrequency,
-      partnerName,
+      partnersName,
       birthday,
       productsStr,
     ]);
-    res.send({ status: 1, reason: "information added" });
+    res.send({ status: 1, reason: "information added", bdayDate});
     console.log(result);
+    console.log("i ran")
   } catch (error) {
     res.send({ status: 0, reason: "duplicate user" });
     console.log(error);

@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const { BirthdayReminderEmail } = require("../email/birthday-template");
 
 const transporter = nodemailer.createTransport({
   host: `mail.podlaunch.co.uk`,
@@ -13,8 +14,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const emailHTML = render(Email({ url: "https://example.com" }));
-
+const emailHTML = render(BirthdayReminderEmail({ url: "https://example.com" }));
 
 function sendEmail(userEmail) {
   const mailOptions = {
