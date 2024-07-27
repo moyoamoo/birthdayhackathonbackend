@@ -22,9 +22,11 @@ router.post("/", async (req, res) => {
   const birthday = bdayYear + "-" + bdayMonth + "-" + bdayDay;
 
   const addBirthday = `INSERT INTO users
-(username, email, email_frequency, partner_name, birthday)
-  values
-    (?, ?, ?, ?, ?)`;
+          (username, email, email_frequency, partner_name, birthday, products)
+            values
+              (?, ?, ?, ?, ?)`;
+
+  const productsStr = products.toString();
 
   try {
     const result = await connectMySQL(addBirthday, [
@@ -33,6 +35,7 @@ router.post("/", async (req, res) => {
       emailFrequency,
       partnerName,
       birthday,
+      productsStr,
     ]);
     res.send({ status: 1, reason: "information added" });
     console.log(result);
