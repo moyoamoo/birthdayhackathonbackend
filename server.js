@@ -18,21 +18,7 @@ const PORT = process.env.PORT || 6001;
 app.listen(PORT, () => {
   console.log(`Server running on PORT ${PORT}`);
 
-  cron.schedule("0 * * * *", async () => {
-    const getHourly = `SELECT * FROM users
-                      WHERE email_frequency LIKE ?`;
-
-    //hourly/daily/weekly
-
-    try {
-      const result = await connectMySQL(getHourly, ["hourly"]);
-      console.log(result);
-    } catch (e) {
-      console.log("no hourly users");
-    }
-  });
-
-  //houry cron job
+  //hourly cron job
   cron.schedule("0 * * * *", async () => {
     const getHourly = `SELECT * FROM users
                       WHERE email_frequency LIKE ?`;
