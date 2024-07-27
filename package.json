@@ -1,10 +1,25 @@
 {
+  "name": "react-email-starter",
+  "version": "0.0.30",
+  "private": true,
+  "scripts": {
+    "build": "email build",
+    "dev": "email dev",
+    "export": "email export"
+  },
   "dependencies": {
+    "@react-email/components": "0.0.22",
+    "react-email": "2.1.6",
+    "react": "^18.2.0",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
     "mysql": "^2.18.1",
     "nodemailer": "^6.9.14",
     "sha256": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.33",
+    "@types/react-dom": "18.2.14"
   }
 }
